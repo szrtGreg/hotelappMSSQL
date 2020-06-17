@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "hotelappDB", "hotelappDB\hotelappDB.sqlproj", "{B9931739-5925-4CBB-8748-3C2E59DCEE61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9931739-5925-4CBB-8748-3C2E59DCEE61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9931739-5925-4CBB-8748-3C2E59DCEE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9931739-5925-4CBB-8748-3C2E59DCEE61}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B9931739-5925-4CBB-8748-3C2E59DCEE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9931739-5925-4CBB-8748-3C2E59DCEE61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9931739-5925-4CBB-8748-3C2E59DCEE61}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA63E608-BA97-4D7D-B0E9-21872BB59CC7}
+	EndGlobalSection
+EndGlobal
