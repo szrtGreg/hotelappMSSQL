@@ -64,5 +64,19 @@ namespace hotelapp.Data.Repositories
                          true);
 
         }
+
+
+        public List<BookingFullModel> SearchBookings(string lastName)
+        {
+            if (string.IsNullOrWhiteSpace(lastName))
+            {
+                lastName = "";
+            }
+
+            return _db.LoadData<BookingFullModel, dynamic>("spBookings_Search",
+                                                    new { lastName, startDate = DateTime.Now.Date },
+                                                    connectionStringName,
+                                                    true);
+        }
     }
 }
