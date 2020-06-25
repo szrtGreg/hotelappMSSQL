@@ -78,5 +78,11 @@ namespace hotelapp.Data.Repositories
                                                     connectionStringName,
                                                     true);
         }
+
+
+        public void CheckInGuest(int bookingId)
+        {
+            _db.SaveData("spBookings_CheckIn", new { id = bookingId }, connectionStringName, true);
+        }
     }
 }
