@@ -7,7 +7,7 @@ using System.Text;
 
 namespace hotelapp.Data.Repositories
 {
-    public class BookingRepository
+    public class BookingRepository : IBookingRepository
     {
         private readonly ISqlDataAccess _db;
         private const string connectionStringName = "SqlDb";
