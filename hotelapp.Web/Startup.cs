@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using hotelapp.Data.Databases;
+using hotelapp.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,8 @@ namespace hotelapp.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<ISqlDataAccess, SqlDataAccess>();
+            services.AddTransient<IBookingRepository, BookingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
