@@ -1,0 +1,11 @@
+﻿@model hotelapp.Web.Models.BookRoomViewModel
+
+<h1>Confirmed</h1>
+<p> </p>
+
+
+<form asp-action="AvailableRoomList" method="post">
+    <input type="hidden" asp-for="@Model.StartDate" />
+    <input type="hidden" asp-for="@Model.EndDate" />
+    <button class="btn btn-primary" type="submit">Back to List</button>
+</form>

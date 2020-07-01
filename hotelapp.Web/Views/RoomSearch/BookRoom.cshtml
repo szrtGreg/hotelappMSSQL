@@ -1,0 +1,34 @@
+﻿@model hotelapp.Web.Models.BookRoomViewModel
+
+
+@{
+    ViewData["Title"] = "BookRoom";
+}
+
+<h1>Book Room</h1>
+
+
+<form method="post" asp-action="Confirmed">
+    <input asp-for="@Model.RoomTypeId" type="hidden" />
+    <input asp-for="@Model.StartDate" type="hidden" />
+    <input asp-for="@Model.EndDate" type="hidden" />
+    <div class="form-group">
+        <label asp-for="@Model.FirstName"></label>
+        <input asp-for="@Model.FirstName" class="form-control" />
+        <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.LastName"></label>
+        <input asp-for="@Model.LastName" class="form-control" />
+        <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+    </div>
+    <button type="submit" style="float: left; margin-left: 90px" class="btn btn-success">Confirm</button>
+</form>
+
+<form asp-action="AvailableRoomList" method="post">
+    <input type="hidden" asp-for="@Model.StartDate" />
+    <input type="hidden" asp-for="@Model.EndDate" />
+    <button class="btn btn-primary" type="submit" style="float: left; margin-left: -170px;">Cancel</button>
+</form>
+
