@@ -1,0 +1,66 @@
+﻿@model hotelapp.Web.Models.CheckInViewModel
+
+
+
+<h1>Check In</h1>
+<p> </p>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="Category">Category:</label>
+        <select asp-for="Category" asp-items="Model.Categories" class="form-control"></select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.LastName"></label>
+        <input asp-for="@Model.LastName" class="form-control" placeholder="Keep empty to find all" />
+    </div>
+    <a asp-area="" asp-controller="RoomSearch" asp-action="Index" class="btn btn-primary">
+        Back
+    </a>
+    <button type="submit" class="btn btn-success">Check reservation</button>
+</form>
+
+
+
+@if (Model.Bookings?.Count > 0)
+{
+    <h2>Results</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Reservation</th>
+                <th>Room</th>
+                <th>Room Number</th>
+                <th>TotalCost</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model.Bookings)
+            {
+                <tr>
+                    <td>
+                        @book.FirstName @book.LastName
+                    </td>
+                    <td>
+                        @book.Title
+                    </td>
+                    <td>
+                        @book.RoomNumber
+                    </td>
+                    <td>
+                        @string.Format("{0:C}", @book.TotalCost)
+                    </td>
+                    <td>
+                        <form method="post" asp-route-bookingId="@book.Id" asp-action="FinallCheckIn">
+                            <button type="submit" class="btn btn-success">Check In</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -34,7 +34,7 @@ namespace hotelapp.Data.Repositories
         {
             GuestsModel guest = _db.LoadData<GuestsModel, dynamic>(
                             "dbo.spGuests_Insert",
-                            new { },
+                            new { firstName, lastName },
                             connectionStringName,
                             true).First();
 
@@ -46,7 +46,7 @@ namespace hotelapp.Data.Repositories
 
             TimeSpan timeStaying = endDate.Date.Subtract(startDate.Date);
 
-            List<RoomModel> availableRooms = _db.LoadData<RoomModel, dynamic>("dbo.spRoomTypes_GetAvailableRoomTypes",
+            List<RoomModel> availableRooms = _db.LoadData<RoomModel, dynamic>("dbo.spRooms_GetAvailableRooms",
                             new { startDate, endDate, roomTypeId },
                             connectionStringName,
                             true);
