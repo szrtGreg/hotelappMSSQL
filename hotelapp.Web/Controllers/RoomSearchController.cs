@@ -74,6 +74,7 @@ namespace hotelapp.Web.Controllers
         public IActionResult CheckIn()
         {
             var vm = new CheckInViewModel();
+            vm.Bookings = _repo.SearchBookings(vm.LastName);
 
             return View(vm);
         }
@@ -81,10 +82,7 @@ namespace hotelapp.Web.Controllers
         [HttpPost("CheckIn")]
         public IActionResult CheckIn(CheckInViewModel vm)
         {
-            if (vm.Category == "waiting")
-            {
-                vm.Bookings = _repo.SearchBookings(vm.LastName);
-            }
+            vm.Bookings = _repo.SearchBookings(vm.LastName);
 
             return View(vm);
         }
