@@ -94,5 +94,17 @@ namespace hotelapp.Web.Controllers
             TempData["message"] = $"Reservation number {bookingId} was added";
             return RedirectToAction(nameof(CheckIn));
         }
+
+        [HttpGet("AddRoom")]
+        public IActionResult AddRoom()
+        {
+
+            var roomList = new RoomListViewModel()
+            {
+                RoomLists = _repo.GetAllRooms()
+            };
+
+            return View(roomList);
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace hotelapp.Data.Repositories
         void CheckInGuest(int bookingId);
         List<RoomTypeModel> GetAvailableRoomTypes(DateTime startDate, DateTime endDate);
         List<BookingFullModel> SearchBookings(string lastName);
+        List<RoomsAndRoomType> GetAllRooms();
     }
 }

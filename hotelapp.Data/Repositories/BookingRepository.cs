@@ -79,6 +79,15 @@ namespace hotelapp.Data.Repositories
                                                     true);
         }
 
+        public List<RoomsAndRoomType> GetAllRooms()
+        {
+            return _db.LoadData<RoomsAndRoomType, dynamic>(
+                            "dbo.spRooms_GetAllRooms",
+                            new { },
+                            connectionStringName,
+                            true);
+        }
+
 
         public void CheckInGuest(int bookingId)
         {
