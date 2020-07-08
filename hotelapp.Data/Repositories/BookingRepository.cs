@@ -93,5 +93,14 @@ namespace hotelapp.Data.Repositories
         {
             _db.SaveData("spBookings_CheckIn", new { id = bookingId }, connectionStringName, true);
         }
+
+        public RoomsAndRoomType Get(int id)
+        {
+            return _db.LoadData<RoomsAndRoomType, dynamic>(
+                "dbo.spRooms_GetRoom",
+                new { roomId = id },
+                connectionStringName,
+                true).FirstOrDefault();
+        }
     }
 }

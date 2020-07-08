@@ -106,5 +106,31 @@ namespace hotelapp.Web.Controllers
 
             return View(roomList);
         }
+
+        [HttpGet("Update/{id}")]
+        public IActionResult Update(int id)
+        {
+            var room = _repo.Get(id);
+            if (room == null)
+            {
+                return NotFound();
+            }
+            var viewModel = new RoomViewModel(room);
+
+            return View(viewModel);
+        }
+
+        //[HttpGet("Update/{id}")]
+        //public IActionResult Update(RoomViewModel viewModel)
+        //{
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(viewModel);
+        //    }
+
+        //    return null;
+        //}
+
     }
 }
