@@ -120,17 +120,18 @@ namespace hotelapp.Web.Controllers
             return View(viewModel);
         }
 
-        //[HttpGet("Update/{id}")]
-        //public IActionResult Update(RoomViewModel viewModel)
-        //{
+        [HttpPost("Update/{id}")]
+        public IActionResult Update(RoomViewModel viewModel)
+        {
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(viewModel);
-        //    }
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            _repo.Update(viewModel.Id, viewModel.RoomNumber, viewModel.RoomTypeId);
 
-        //    return null;
-        //}
+            return RedirectToAction(nameof(AddRoom));
+        }
 
     }
 }

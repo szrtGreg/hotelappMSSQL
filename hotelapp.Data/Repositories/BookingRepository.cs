@@ -102,5 +102,10 @@ namespace hotelapp.Data.Repositories
                 connectionStringName,
                 true).FirstOrDefault();
         }
+
+        public void Update(int roomId, string roomNumber, int roomTypeId)
+        {
+            _db.SaveData("spRooms_Update", new { roomId, roomNumber, roomTypeId }, connectionStringName, true);
+        }
     }
 }

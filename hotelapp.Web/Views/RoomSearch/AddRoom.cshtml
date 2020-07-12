@@ -9,6 +9,7 @@
                                 <div class="card-block">
                                     <h4 class="card-title">@room.RoomNumber</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">Id: @room.Id</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Category: @room.Title</h6>
                                     <h6 class="card-subtitle mb-2 text-muted"> Price: @string.Format("{0:C}", room.Price)</h6>
                                     <a asp-action="Update" asp-route-id="@room.Id" title="Edit room" class="card-link">Update</a>
                                 </div>

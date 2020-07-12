@@ -53,12 +53,30 @@ declare @id int;
 
 set @id = 4
 
-SELECT r.Id, r.RoomNumber, rt.Title, rt.Description, rt.Price  FROM dbo.Rooms r
+SELECT r.Id, r.RoomNumber, r.RoomTypeId, rt.Title, rt.Description, rt.Price  FROM dbo.Rooms r
 		inner join dbo.RoomTypes rt ON r.RoomTypeId = rt.Id
 		where r.Id = @id
 
+select * FROM dbo.Rooms
+select * FROM dbo.RoomTypes
+
+declare @id int;
+declare @roomNumber varchar(10);
+declare @roomTypeId int;
+
+set @id = 4;
+set @roomNumber = 22222;
+set @roomTypeId = 2;
+
+update dbo.Rooms 
+set RoomNumber = @roomNumber, RoomTypeId = @roomTypeId
+where Id = @id
 
 
-			update dbo.Bookings
+
+
+
+update dbo.Rooms
 	set CheckedIn = 1
 	where Id = @id;
+

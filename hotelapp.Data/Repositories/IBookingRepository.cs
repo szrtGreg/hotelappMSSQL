@@ -12,5 +12,7 @@ namespace hotelapp.Data.Repositories
         List<BookingFullModel> SearchBookings(string lastName);
         RoomsAndRoomType Get(int roomId);
         List<RoomsAndRoomType> GetAllRooms();
+
+        void Update(int roomId, string roomNumber, int roomTypeId);
     }
 }
