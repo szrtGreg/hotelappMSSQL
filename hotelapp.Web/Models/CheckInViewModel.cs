@@ -13,12 +13,5 @@ namespace hotelapp.Web.Models
 
         public List<BookingFullModel> Bookings { get; set; }
 
-        public string Category { get; set; }
-
-        public List<SelectListItem> Categories { get; } = new List<SelectListItem>
-        {
-            new SelectListItem { Text = "Guest waiting for checking", Value = "waiting", },
-            new SelectListItem { Text = "Current guests", Value = "current"},
-        };
     }
 }

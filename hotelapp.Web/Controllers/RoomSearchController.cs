@@ -74,6 +74,7 @@ namespace hotelapp.Web.Controllers
         public IActionResult CheckIn()
         {
             var vm = new CheckInViewModel();
+            vm.Bookings = _repo.SearchBookings(vm.LastName);
 
             return View(vm);
         }
@@ -81,10 +82,7 @@ namespace hotelapp.Web.Controllers
         [HttpPost("CheckIn")]
         public IActionResult CheckIn(CheckInViewModel vm)
         {
-            if (vm.Category == "waiting")
-            {
-                vm.Bookings = _repo.SearchBookings(vm.LastName);
-            }
+            vm.Bookings = _repo.SearchBookings(vm.LastName);
 
             return View(vm);
         }
@@ -96,5 +94,44 @@ namespace hotelapp.Web.Controllers
             TempData["message"] = $"Reservation number {bookingId} was added";
             return RedirectToAction(nameof(CheckIn));
         }
+
+        [HttpGet("AddRoom")]
+        public IActionResult AddRoom()
+        {
+
+            var roomList = new RoomListViewModel()
+            {
+                RoomLists = _repo.GetAllRooms()
+            };
+
+            return View(roomList);
+        }
+
+        [HttpGet("Update/{id}")]
+        public IActionResult Update(int id)
+        {
+            var room = _repo.Get(id);
+            if (room == null)
+            {
+                return NotFound();
+            }
+            var viewModel = new RoomViewModel(room);
+
+            return View(viewModel);
+        }
+
+        [HttpPost("Update/{id}")]
+        public IActionResult Update(RoomViewModel viewModel)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            _repo.Update(viewModel.Id, viewModel.RoomNumber, viewModel.RoomTypeId);
+
+            return RedirectToAction(nameof(AddRoom));
+        }
+
     }
 }

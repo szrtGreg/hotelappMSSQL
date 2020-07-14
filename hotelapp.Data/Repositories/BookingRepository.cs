@@ -79,10 +79,33 @@ namespace hotelapp.Data.Repositories
                                                     true);
         }
 
+        public List<RoomsAndRoomType> GetAllRooms()
+        {
+            return _db.LoadData<RoomsAndRoomType, dynamic>(
+                            "dbo.spRooms_GetAllRooms",
+                            new { },
+                            connectionStringName,
+                            true);
+        }
+
 
         public void CheckInGuest(int bookingId)
         {
             _db.SaveData("spBookings_CheckIn", new { id = bookingId }, connectionStringName, true);
+        }
+
+        public RoomsAndRoomType Get(int id)
+        {
+            return _db.LoadData<RoomsAndRoomType, dynamic>(
+                "dbo.spRooms_GetRoom",
+                new { roomId = id },
+                connectionStringName,
+                true).FirstOrDefault();
+        }
+
+        public void Update(int roomId, string roomNumber, int roomTypeId)
+        {
+            _db.SaveData("spRooms_Update", new { roomId, roomNumber, roomTypeId }, connectionStringName, true);
         }
     }
 }

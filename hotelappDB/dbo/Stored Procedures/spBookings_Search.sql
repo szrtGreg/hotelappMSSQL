@@ -12,5 +12,7 @@ begin
 	inner join dbo.Guests g ON b.GuestId = g.Id
 	inner join dbo.Rooms r ON b.RoomId = r.Id
 	inner join dbo.RoomTypes rt ON r.RoomTypeId = rt.Id
-	where b.StartDate = @startDate and g.LastName  LIKE @lastname + '%' and b.CheckedIn = 0;
+	where b.StartDate = @startDate   and g.LastName  LIKE @lastname + '%' 
+	or (b.EndDate > @startDate and CheckedIn = 1 and g.LastName  LIKE @lastname + '%')
+
 end

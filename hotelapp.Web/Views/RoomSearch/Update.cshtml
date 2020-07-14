@@ -1,0 +1,41 @@
+﻿@model hotelapp.Web.Models.RoomViewModel
+
+<h1></h1>
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <form asp-action="Update" asp-route-id="@Model.Id" method="post" id="update-room-form">
+            <input type="hidden" asp-for="Id" />
+            <div class="col-md-4 col-lg-4">
+                <div class="form-group">
+                    <label asp-for="Title">Title:</label>
+                    <input type="text" asp-for="Title" class="form-control" readonly />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Description:</label>
+                    <input type="text" asp-for="Description" class="form-control" readonly />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price">Price:</label>
+                    <input type="text" min="0" max="100" asp-for="Price" class="form-control" readonly />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="form-group">
+                    <label asp-for="RoomNumber">RoomNumber:</label>
+                    <input type="text" asp-for="RoomNumber" class="form-control" />
+                    <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RoomTypeId">RoomType:</label>
+                    <select asp-for="RoomTypeId" asp-items="Model.Categories" class="form-control"></select>
+                    <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-success">Update Room</button>
+            </div>
+        </form>
+    </div>
+</div>
