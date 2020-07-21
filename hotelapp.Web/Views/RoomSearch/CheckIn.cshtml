@@ -13,7 +13,13 @@
     <button type="submit" class="btn btn-success">Check reservation</button>
 </form>
 
+<br />
+<ul>
+    <li>Pokazuje akutalnie zameldowane osoby</li>
+    <li>Osoby z rezerwacja w przyszłosci</li>
+    <li>Osoby gotowe do zameldowania</li>
 
+</ul>
 
 @if (Model.Bookings?.Count > 0)
 {
@@ -25,6 +31,7 @@
                 <th>Room</th>
                 <th>Room Number</th>
                 <th>TotalCost</th>
+                <th>Check In</th>
                 <th>Check Out</th>
                 <th></th>
             </tr>
@@ -32,32 +39,53 @@
         <tbody>
             @foreach (var book in Model.Bookings)
             {
-                <tr>
-                    <td>
-                        @book.FirstName @book.LastName
-                    </td>
-                    <td>
-                        @book.Title
-                    </td>
-                    <td>
-                        @book.RoomNumber
-                    </td>
-                    <td>
-                        @string.Format("{0:C}", @book.TotalCost)
-                    </td>
-                    <td>
-                        <strong>@book.EndDate.ToShortDateString()</strong>
-                    </td>
-                    <td>
-                      @if(!book.CheckedIn)
+            <tr>
+                <td>
+                    @book.FirstName @book.LastName
+                </td>
+                <td>
+                    @book.Title
+                </td>
+                <td>
+                    @book.RoomNumber
+                </td>
+                <td>
+                    @string.Format("{0:C}", @book.TotalCost)
+                </td>
+                <td class="check-visible">
+                    @if (book.StartDate.ToShortDateString() == DateTime.Now.ToShortDateString())
+                    {
+                        <p>Today</p>
+                    }
+                    else
+                    {
+                        <p>@book.StartDate.ToShortDateString()</p>
+                    }
+                </td>
+                <td class="check-visible">
+                    <strong>@book.EndDate.ToShortDateString()</strong>
+                </td>
+                <td>
+                    @if (!book.CheckedIn)
+                    {
+                        @if (book.StartDate.ToShortDateString() == DateTime.Now.ToShortDateString())
+                        {
+                            <form method="post" asp-route-bookingId="@book.Id" asp-action="FinallCheckIn">
+                                <button type="submit" class="btn btn-success">Check In</button>
+                            </form>
+                        }
+                        else if (book.StartDate < DateTime.Now)
                         {
                             <form method="post" asp-route-bookingId="@book.Id" asp-action="FinallCheckIn">
                                 <button type="submit" class="btn btn-success">Check In</button>
                             </form>
                         }
 
-                    </td>
-                </tr>
+
+                    }
+
+                </td>
+            </tr>
             }
         </tbody>
     </table>

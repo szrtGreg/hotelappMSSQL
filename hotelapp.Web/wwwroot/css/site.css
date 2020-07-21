@@ -74,3 +74,7 @@ body {
 .card {
     float: left;
 }
+
+.check-visible {
+    background-color: #edf2f4;
+}
