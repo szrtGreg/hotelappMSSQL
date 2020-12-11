@@ -81,8 +81,7 @@
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PublishProfiles\hotelappDB.publish.xml" />
-    <None Include="hotelappDB.publish.xml" />
     <None Include="hotelappDBDocker.publish.publish.xml" />
+    <None Include="PublishProfiles\hotelappDB.publish.xml" />
   </ItemGroup>
 </Project>
