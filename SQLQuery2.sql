@@ -80,3 +80,22 @@ update dbo.Rooms
 	set CheckedIn = 1
 	where Id = @id;
 
+
+
+declare @startDate date;
+declare @endDate date;
+declare @lastname nvarchar;
+
+set @startDate = '2021-01-13';
+set @endDate = '2021-01-14';
+
+SELECT rt.Id, rt.Title, rt.Description, rt.Price FROM dbo.Rooms r
+		INNER JOIN dbo.RoomTypes rt
+		ON r.RoomTypeId = rt.Id
+		WHERE r.Id not in (
+		select b.RoomId 
+		FROM dbo.Bookings b
+		WHERE (@startDate < b.StartDate and @endDate > b.EndDate)
+			or (b.StartDate <= @endDate and @endDate < b.EndDate)
+			or (b.StartDate <= @startDate and @startDate < b.EndDate))
+		GROUP BY rt.Id, rt.Title, rt.Description, rt.Price
