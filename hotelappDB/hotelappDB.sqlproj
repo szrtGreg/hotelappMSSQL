@@ -59,7 +59,6 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
     <Folder Include="Scripts" />
-    <Folder Include="PublishProfiles" />
     <Folder Include="dbo\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +80,6 @@
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="hotelappDBDocker.publish.publish.xml" />
-    <None Include="PublishProfiles\hotelappDB.publish.xml" />
+    <None Include="hotelappDB.publish.xml" />
   </ItemGroup>
 </Project>
